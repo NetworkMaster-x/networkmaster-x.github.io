@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetworkMaster — narzędzie do diagnostyki sieciowej</title>
+<meta name="description" content="NetworkMaster: terminalowe narzędzie do diagnostyki, skanowania i zarządzania siecią lokalną oraz VPN. Windows, Linux, macOS.">
+<style>
+  :root{
+    --bg:#0b0f0c; --panel:#11170f; --border:#1f2a1c; --text:#d9e6d6; --muted:#8fa389;
+    --accent:#3ddc6f; --accent2:#6fe3a8; --warn:#e6c25c; --danger:#e65c5c; --link:#7fd4ff;
+    --mono: "SFMono-Regular","Consolas","Liberation Mono",Menlo,Courier,monospace;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f4f8f3; --panel:#ffffff; --border:#dbe6d7; --text:#16220f; --muted:#51664a;
+           --accent:#1a9e4b; --accent2:#0d7a39; --warn:#9a6b00; --danger:#b23b3b; --link:#0b63b0; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans)}
+  body{padding:0 16px}
+  .wrap{max-width:860px;margin:0 auto}
+  header.hero{padding:56px 0 28px;text-align:center}
+  .tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+       color:var(--accent2);border:1px solid var(--border);border-radius:999px;padding:4px 12px;margin-bottom:18px}
+  h1{font-size:clamp(28px,6vw,44px);margin:0 0 10px;line-height:1.15}
+  h1 .brand{color:var(--accent)}
+  .lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 auto 28px;line-height:1.55}
+  .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;
+       text-decoration:none;font-weight:600;font-size:15px;border:1px solid transparent;transition:transform .08s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#07140a}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .note{color:var(--muted);font-size:13px;margin-top:10px}
+  section{padding:34px 0;border-top:1px solid var(--border)}
+  h2{font-size:22px;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .card h3{margin:0 0 8px;font-size:15px;color:var(--accent2)}
+  .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+  .platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .plat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .plat h3{margin:0 0 10px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .plat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .plat a{color:var(--link);font-family:var(--mono);font-size:13.5px;text-decoration:none}
+  .plat a:hover{text-decoration:underline}
+  .plat .arch-note{color:var(--muted);font-size:12px;margin-top:8px}
+  table.features{width:100%;border-collapse:collapse;font-size:14px}
+  table.features td,table.features th{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  table.features th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  .ok{color:var(--accent)} .no{color:var(--danger)} .partial{color:var(--warn)}
+  .warn-box{background:var(--panel);border:1px solid var(--warn);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--text)}
+  .warn-box b{color:var(--warn)}
+  footer{padding:30px 0 60px;color:var(--muted);font-size:13px;text-align:center}
+  footer a{color:var(--link);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .kbd{font-family:var(--mono);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-size:13px}
+  code{font-family:var(--mono);font-size:.95em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="tag">v2.4.0 · WINDOWS · LINUX · MACOS</span>
+    <h1><span class="brand">Network</span>Master</h1>
+    <p class="lead">Jedno narzędzie w terminalu do diagnostyki sieci, skanowania LAN, zarządzania
+      VPN (systemowym, WireGuard, OpenVPN) i monitorowania połączenia. Bez instalatora,
+      bez zależności, jeden plik na Twoją platformę.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#pobieranie">Pobierz</a>
+      <a class="btn btn-ghost" href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja">Dokumentacja</a>
+      <a class="btn btn-ghost" href="https://github.com/NetworkMaster-x/networkmaster/releases">Wszystkie wydania</a>
+    </div>
+    <p class="note">Program jest obecnie udostępniany bezpłatnie. Zamknięte oprogramowanie — szczegóły w <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/LICENSE.md" style="color:var(--link)">licencji</a>.</p>
+  </header>
+
+  <section id="pobieranie">
+    <h2>Pobieranie</h2>
+    <div class="platforms">
+      <div class="plat">
+        <h3>🪟 Windows</h3>
+        <ul>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-windows-amd64.exe">NetworkMaster-windows-amd64.exe</a></li>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-windows-arm64.exe">NetworkMaster-windows-arm64.exe</a> <span style="color:var(--muted)">(ARM, np. Surface Pro X)</span></li>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-windows-386.exe">NetworkMaster-windows-386.exe</a> <span style="color:var(--muted)">(32-bit)</span></li>
+        </ul>
+      </div>
+      <div class="plat">
+        <h3>🐧 Linux</h3>
+        <ul>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-linux-amd64">NetworkMaster-linux-amd64</a></li>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-linux-arm64">NetworkMaster-linux-arm64</a> <span style="color:var(--muted)">(np. Raspberry Pi)</span></li>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-linux-386">NetworkMaster-linux-386</a> <span style="color:var(--muted)">(32-bit)</span></li>
+        </ul>
+        <p class="arch-note">Po pobraniu: <span class="kbd">chmod +x NetworkMaster-linux-*</span> i uruchom w terminalu.</p>
+      </div>
+      <div class="plat">
+        <h3>🍎 macOS</h3>
+        <ul>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-macos-amd64">NetworkMaster-macos-amd64</a> <span style="color:var(--muted)">(Intel)</span></li>
+          <li><a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest/download/NetworkMaster-macos-arm64">NetworkMaster-macos-arm64</a> <span style="color:var(--muted)">(Apple Silicon)</span></li>
+        </ul>
+        <p class="arch-note">Build nie był uruchomiony na żywym Macu — patrz <a href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja" style="color:var(--link)">dokumentacja</a>.</p>
+      </div>
+    </div>
+    <p class="note">Linki prowadzą do najnowszego wydania na GitHubie. Suma SHA-256 każdego pliku:
+      <a href="https://github.com/NetworkMaster-x/networkmaster/releases/latest" style="color:var(--link)">checksums.txt w wydaniu</a>.</p>
+  </section>
+
+  <section>
+    <h2>Co umie</h2>
+    <div class="grid">
+      <div class="card"><h3>Diagnostyka</h3><p>Ping, traceroute, DNS (rekordy, propagacja, benchmark), test prędkości, SSL/TLS, WHOIS, GeoIP.</p></div>
+      <div class="card"><h3>Skanowanie</h3><p>Porty wielowątkowo, podsieci, urządzenia w LAN, tabela ARP, rozpoznawanie producenta po MAC.</p></div>
+      <div class="card"><h3>Zarządzanie</h3><p>Konfiguracja kart sieciowych, profile IP, Wake-on-LAN, edycja pliku hosts z backupem, raporty.</p></div>
+      <div class="card"><h3>VPN</h3><p>WireGuard i OpenVPN identycznie na każdej platformie, plus VPN systemowy (RAS / NetworkManager / scutil) — dodawanie, backup, przywracanie.</p></div>
+      <div class="card"><h3>Monitorowanie</h3><p>Dashboard w czasie rzeczywistym, pasmo, siła sygnału WiFi, aktywne połączenia z nazwami procesów.</p></div>
+      <div class="card"><h3>Aktualizacje</h3><p>Program sam sprawdza nowe wersje, pokazuje listę zmian i pyta o zgodę — oprócz poprawek krytycznych.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>VPN systemowy — możliwości per platforma</h2>
+    <table class="features">
+      <tr><th>Możliwość</th><th>Windows</th><th>Linux</th><th>macOS</th></tr>
+      <tr><td>Tworzenie / edycja / usuwanie profilu</td><td class="ok">✓</td><td class="ok">✓ *</td><td class="no">✗ **</td></tr>
+      <tr><td>Połączenie / rozłączenie</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓ (istniejące profile)</td></tr>
+      <tr><td>IKEv2</td><td class="ok">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+      <tr><td>Backup haseł/PSK</td><td class="partial">najlepszym staraniem</td><td class="ok">✓ (jako root)</td><td class="no">✗ (Keychain)</td></tr>
+    </table>
+    <p class="note">* wymaga wtyczki NetworkManager-l2tp/-pptp. ** ograniczenie samego macOS, nie tego programu —
+      szczegóły w <a href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja" style="color:var(--link)">dokumentacji</a>.</p>
+  </section>
+
+  <section>
+    <h2>Uczciwie o ograniczeniach</h2>
+    <div class="warn-box">
+      Kod dla Linuksa i macOS kompiluje się i przechodzi testy statyczne, ale <b>nie był uruchomiony
+      na żywym Linuksie ani macOS</b> — środowisko, w którym powstał, miało tylko Windows.
+      Pliki 32-bit (<code>windows-386</code>) mają jedno znane ograniczenie: automatyczne odzyskiwanie
+      zapamiętanych haseł VPN do backupu prawdopodobnie nie zadziała. Pełna, szczegółowa lista —
+      w <a href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja" style="color:var(--link)">dokumentacji</a>.
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <a href="https://github.com/NetworkMaster-x/networkmaster">Kod i wydania</a> ·
+      <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/CHANGELOG.md">Lista zmian</a> ·
+      <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/dokumentacja/Regulamin.md">Regulamin</a> ·
+      <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/dokumentacja/Polityka-Prywatnosci.md">Polityka Prywatności</a>
+    </p>
+    <p>© 2026 NetworkMaster. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+
+</div>
+</body>
+</html>
