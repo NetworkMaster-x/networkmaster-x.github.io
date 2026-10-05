@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NetworkMaster — narzędzie do diagnostyki sieciowej</title>
-<meta name="description" content="NetworkMaster: terminalowe narzędzie do diagnostyki, skanowania i zarządzania siecią lokalną oraz VPN. Windows, Linux, macOS.">
+<title>NetworkMaster — narzędzie do diagnostyki sieciowej | projekt na sprzedaż</title>
+<meta name="description" content="NetworkMaster: terminalowe narzędzie do diagnostyki, skanowania i zarządzania siecią lokalną oraz VPN na Windows, Linux i macOS. Projekt z kodem źródłowym na sprzedaż.">
 <style>
   :root{
     --bg:#0b0f0c; --panel:#11170f; --border:#1f2a1c; --text:#d9e6d6; --muted:#8fa389;
@@ -57,23 +57,40 @@
   footer a:hover{text-decoration:underline}
   .kbd{font-family:var(--mono);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-size:13px}
   code{font-family:var(--mono);font-size:.95em}
+  .sale-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;
+       letter-spacing:.06em;color:#1a140a;background:var(--warn);border-radius:999px;padding:4px 14px;margin-bottom:18px;font-weight:700}
+  .sale-box{background:var(--panel);border:1px solid var(--warn);border-radius:14px;padding:22px}
+  .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .checklist li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5}
+  .checklist li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0}
+  .sale-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;margin-top:18px}
+  @media (max-width:640px){.sale-grid{grid-template-columns:1fr}}
+  .contact-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+  .contact-card .price{font-size:15px;margin:6px 0 14px}
+  .contact-card .price strong{color:var(--accent2)}
+  table.spec{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.spec th,table.spec td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:left}
+  table.spec th{color:var(--muted);font-weight:600;width:38%}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="hero">
+    <a class="sale-tag" href="#sprzedaz">🏷️ Projekt na sprzedaż — kod źródłowy + prawa</a>
+    <br>
     <span class="tag">v2.4.1 · WINDOWS · LINUX · MACOS</span>
     <h1><span class="brand">Network</span>Master</h1>
     <p class="lead">Jedno narzędzie w terminalu do diagnostyki sieci, skanowania LAN, zarządzania
       VPN (systemowym, WireGuard, OpenVPN) i monitorowania połączenia. Bez instalatora,
       bez zależności, jeden plik na Twoją platformę.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#pobieranie">Pobierz</a>
+      <a class="btn btn-primary" href="#sprzedaz">Kup projekt</a>
+      <a class="btn btn-ghost" href="#pobieranie">Pobierz (darmowe)</a>
       <a class="btn btn-ghost" href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja">Dokumentacja</a>
-      <a class="btn btn-ghost" href="https://github.com/NetworkMaster-x/networkmaster/releases">Wszystkie wydania</a>
     </div>
-    <p class="note">Program jest obecnie udostępniany bezpłatnie. Zamknięte oprogramowanie — szczegóły w <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/LICENSE.md" style="color:var(--link)">licencji</a>.</p>
+    <p class="note">Program jest obecnie udostępniany bezpłatnie, w pełnej wersji. Zamknięte
+      oprogramowanie — szczegóły w <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/LICENSE.md" style="color:var(--link)">licencji</a>.</p>
   </header>
 
   <section id="pobieranie">
@@ -145,8 +162,69 @@
     </div>
   </section>
 
+  <section id="sprzedaz">
+    <div class="sale-box">
+      <h2 style="margin-top:0">🏷️ Projekt na sprzedaż</h2>
+      <p class="lead" style="margin:0 0 4px;text-align:left">
+        Sprzedaję kompletny projekt NetworkMaster: kod źródłowy, dokumentację i prawa do programu.
+        Program jest obecnie darmowy w pełnej wersji — kod jest zamknięty (patrz
+        <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/LICENSE.md" style="color:var(--link)">licencja</a>),
+        a jego sprzedaż jest odrębną transakcją opisaną w
+        <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/dokumentacja/Regulamin.md" style="color:var(--link)">Regulaminie §8</a>.
+      </p>
+
+      <div class="sale-grid">
+        <ul class="checklist">
+          <li><span><strong>Pełny kod źródłowy</strong> (Go, ok. 13 200 linii) w prywatnym repozytorium GitHub, kompilujący się bez błędów na 8 platformach</span></li>
+          <li><span><strong>Przeniesienie praw</strong> do kodu, nazwy i dokumentacji na podstawie odrębnej umowy</span></li>
+          <li><span><strong>Pełna dokumentacja techniczna i użytkownika</strong>, architektura, znane ograniczenia — bez niespodzianek po zakupie</span></li>
+          <li><span><strong>Wzory Regulaminu i Polityki Prywatności</strong> (RODO), gotowe do uzupełnienia danymi nabywcy</span></li>
+          <li><span><strong>Automatyczny pakiet testów</strong> (91 testów) i skrypt budowania (`build.ps1`) na wszystkie platformy</span></li>
+          <li><span><strong>Ta strona i system aktualizacji/komunikatów</strong> gotowe do przejęcia i rebrandingu</span></li>
+        </ul>
+
+        <div class="contact-card">
+          <h3 style="margin-top:0">Zainteresowany?</h3>
+          <p class="price">Cena: <strong>do negocjacji</strong></p>
+          <p style="color:var(--muted);font-size:13.5px">Napisz, chętnie odpowiem na pytania techniczne i pokażę kod na żywo przed zakupem.</p>
+          <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" href="mailto:pxware@pxware.pl?subject=NetworkMaster%20%E2%80%93%20zapytanie%20o%20zakup">
+            Napisz e-mail
+          </a>
+          <p class="note" style="margin-top:10px">pxware@pxware.pl</p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.3fr 1fr;margin-top:28px">
+        <div>
+          <h3 style="color:var(--accent2);font-size:15px">Specyfikacja techniczna</h3>
+          <table class="spec">
+            <tr><th>Platformy</th><td>Windows, Linux, macOS — amd64/arm64 (+386 dla Win/Linux)</td></tr>
+            <tr><th>Język</th><td>Go 1.22+, bez CGO, bez zależności zewnętrznych</td></tr>
+            <tr><th>Architektura</th><td>Jedna baza kodu, separacja systemowa przez build tagi (nie gałęzie)</td></tr>
+            <tr><th>Backend</th><td>brak — program w pełni lokalny, jedyne połączenia to opcjonalne zapytania do publicznych API (GitHub, WHOIS, GeoIP) inicjowane przez użytkownika</td></tr>
+            <tr><th>Testy</th><td>91 testów automatycznych w 7 plikach, czysty `go vet` na 8 platformach</td></tr>
+            <tr><th>Dystrybucja</th><td>pojedynczy plik wykonywalny, GitHub Releases, wbudowany system aktualizacji</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3 style="color:var(--accent2);font-size:15px">Dla kogo ten projekt</h3>
+          <div class="card">
+            <p style="margin:0 0 10px">Dla firm i twórców, którzy chcą gotowe narzędzie sieciowe pod własną marką:</p>
+            <ul class="checklist" style="gap:6px">
+              <li><span>firmy IT/hostingowe potrzebujące narzędzia diagnostycznego do wsparcia klienta,</span></li>
+              <li><span>dostawcy VPN szukający gotowego klienta wieloplatformowego,</span></li>
+              <li><span>programiści chcący rozwinąć gotowy produkt (np. GUI, wersja chmurowa, wsparcie dla kolejnych VPN),</span></li>
+              <li><span>każdy, kto chce przejąć produkt z kompletną dokumentacją zamiast zaczynać od zera.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>
+      <a href="#sprzedaz">Projekt na sprzedaż</a> ·
       <a href="https://github.com/NetworkMaster-x/networkmaster">Kod i wydania</a> ·
       <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/CHANGELOG.md">Lista zmian</a> ·
       <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/dokumentacja/Regulamin.md">Regulamin</a> ·
