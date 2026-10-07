@@ -82,8 +82,8 @@
     <span class="tag">v2.5.2 · WINDOWS · LINUX · MACOS</span>
     <h1><span class="brand">Network</span>Master</h1>
     <p class="lead">Jedno narzędzie w terminalu do diagnostyki sieci, skanowania LAN, zarządzania
-      VPN (systemowym, WireGuard, OpenVPN) i monitorowania połączenia. Bez instalatora,
-      bez zależności, jeden plik na Twoją platformę.</p>
+      VPN (systemowym, WireGuard, OpenVPN), klienta SSH/SFTP/FTP i monitorowania połączenia.
+      Bez instalatora, jeden plik na Twoją platformę.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#sprzedaz">Kup projekt</a>
       <a class="btn btn-ghost" href="#pobieranie">Pobierz (darmowe)</a>
@@ -155,9 +155,13 @@
   <section>
     <h2>Uczciwie o ograniczeniach</h2>
     <div class="warn-box">
-      Kod dla Linuksa i macOS kompiluje się i przechodzi testy statyczne, ale <b>nie był uruchomiony
-      na żywym Linuksie ani macOS</b> — środowisko, w którym powstał, miało tylko Windows.
-      Pliki 32-bit (<code>windows-386</code>) mają jedno znane ograniczenie: automatyczne odzyskiwanie
+      <b>macOS nie był uruchomiony na żywym systemie</b> — kod kompiluje się i przechodzi testy
+      statyczne, ale był tworzony i weryfikowany tylko na Windows/Linux. <b>Linux natomiast był
+      zweryfikowany na żywym serwerze</b> (menu, diagnostyka, ARP, kalkulator podsieci, menedżer
+      VPN — poprawnie zgłasza brak NetworkManagera, zamiast cicho zawodzić). Dodatkowo: zwykłe
+      FTP nie szyfruje hasła ani transferu (użyj SFTP, gdy to możliwe), na Windows strzałki i
+      klawisze funkcyjne nie działają w interaktywnej sesji SSH, a pliki 32-bit
+      (<code>windows-386</code>) mają jedno znane ograniczenie: automatyczne odzyskiwanie
       zapamiętanych haseł VPN do backupu prawdopodobnie nie zadziała. Pełna, szczegółowa lista —
       w <a href="https://github.com/NetworkMaster-x/networkmaster/tree/main/dokumentacja" style="color:var(--link)">dokumentacji</a>.
     </div>
@@ -186,11 +190,11 @@
 
       <div class="sale-grid">
         <ul class="checklist">
-          <li><span><strong>Pełny kod źródłowy</strong> (Go, ok. 13 200 linii) w prywatnym repozytorium GitHub, kompilujący się bez błędów na 8 platformach</span></li>
+          <li><span><strong>Pełny kod źródłowy</strong> (Go, ok. 15 000 linii) w prywatnym repozytorium GitHub, kompilujący się bez błędów na 8 platformach</span></li>
           <li><span><strong>Przeniesienie praw</strong> do kodu, nazwy i dokumentacji na podstawie odrębnej umowy</span></li>
-          <li><span><strong>Pełna dokumentacja techniczna i użytkownika</strong>, architektura, znane ograniczenia — bez niespodzianek po zakupie</span></li>
+          <li><span><strong>Pełna <a href="https://github.com/NetworkMaster-x/networkmaster/blob/main/dokumentacja/Dokumentacja-Techniczna-NetworkMaster.md" style="color:var(--link)">dokumentacja techniczna</a> i użytkownika</strong> — architektura, opis każdego modułu, model danych, znane ograniczenia i dług techniczny, bez niespodzianek po zakupie</span></li>
           <li><span><strong>Wzory Regulaminu i Polityki Prywatności</strong> (RODO), gotowe do uzupełnienia danymi nabywcy</span></li>
-          <li><span><strong>Automatyczny pakiet testów</strong> (91 testów) i skrypt budowania (`build.ps1`) na wszystkie platformy</span></li>
+          <li><span><strong>Automatyczny pakiet testów</strong> (108 testów) i skrypt budowania (`build.ps1`) na wszystkie platformy</span></li>
           <li><span><strong>Ta strona i system aktualizacji/komunikatów</strong> gotowe do przejęcia i rebrandingu</span></li>
         </ul>
 
@@ -212,8 +216,8 @@
             <tr><th>Platformy</th><td>Windows, Linux, macOS — amd64/arm64 (+386 dla Win/Linux)</td></tr>
             <tr><th>Język</th><td>Go 1.22+, bez CGO, 3 zależności (SSH/SFTP: golang.org/x/crypto, x/term, pkg/sftp)</td></tr>
             <tr><th>Architektura</th><td>Jedna baza kodu, separacja systemowa przez build tagi (nie gałęzie)</td></tr>
-            <tr><th>Backend</th><td>brak — program w pełni lokalny, jedyne połączenia to opcjonalne zapytania do publicznych API (GitHub, WHOIS, GeoIP) inicjowane przez użytkownika</td></tr>
-            <tr><th>Testy</th><td>91 testów automatycznych w 7 plikach, czysty `go vet` na 8 platformach</td></tr>
+            <tr><th>Backend</th><td>brak — program w pełni lokalny; jedyne połączenia sieciowe to te, które inicjuje sam użytkownik: zapytania do publicznych API (GitHub do aktualizacji, WHOIS, GeoIP) oraz sesje SSH/SFTP/FTP do hostów podanych przez użytkownika</td></tr>
+            <tr><th>Testy</th><td>108 testów automatycznych w 13 plikach, czysty `go vet` na 8 platformach</td></tr>
             <tr><th>Dystrybucja</th><td>pojedynczy plik wykonywalny, GitHub Releases, wbudowany system aktualizacji</td></tr>
           </table>
         </div>
